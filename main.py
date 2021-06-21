@@ -4,6 +4,8 @@ AUTHOR:     Ben Simcox
 PROJECT:    verbose-waffle (github.com/bnsmcx/verbose-waffle)
 PURPOSE:    This file is the main entry point for the app.
 """
+import time
+
 from read_switches import read_switches
 from write_to_display import write_to_display
 
@@ -27,9 +29,11 @@ def process_switch_positions(switch_positions: list) -> list:
 
 def main():
     """main function"""
-    switch_positions = read_switches()
-    text = process_switch_positions(switch_positions)
-    write_to_display(text)
+    while True:
+        switch_positions = read_switches()
+        text = process_switch_positions(switch_positions)
+        write_to_display(text)
+        time.sleep(3)
 
 
 if __name__ == '__main__':
